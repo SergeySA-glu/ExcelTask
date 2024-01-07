@@ -55,7 +55,12 @@ namespace ExcelTask
                     }
                     break;
                 case 3:
-                    Executor.Instance.SetNewContact(null, null);
+                    Console.WriteLine("Введите наименование организации: ");
+                    var organization = Console.ReadLine();
+                    Console.WriteLine("Введите фамилию, имя, отчество контактного лица: ");
+                    var newContact = Console.ReadLine();
+                    if (Executor.Instance.SetNewContact(organization, newContact))
+                        Console.WriteLine("Контактное лицо организации {0} перезаписано", organization);
                     break;
                 case 4:
                     var dateValue = 0;
@@ -81,7 +86,6 @@ namespace ExcelTask
                                 isYear = number == 1;
                                 break;
                             }
-
                         }
                         Console.WriteLine(WrongChoice);
                     }
